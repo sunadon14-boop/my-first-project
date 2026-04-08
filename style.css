@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background: #111;
+  color: #fff;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 200px;
+  cursor: pointer;
+}
+
+.correct {
+  background: green;
+}
+
+.wrong {
+  background: red;
+}
