@@ -3,20 +3,41 @@ body {
   text-align: center;
   background: #111;
   color: #fff;
+  margin: 0;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 22px;
+  margin: 20px 0;
+}
+
+#quiz-box {
+  max-width: 400px;
+  margin: auto;
 }
 
 button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  width: 200px;
+  width: 100%;
+  padding: 15px;
+  margin: 8px 0;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
   cursor: pointer;
 }
 
-.correct {
-  background: green;
+#next-btn {
+  background: #444;
+  color: white;
 }
 
-.wrong {
-  background: red;
+button:hover {
+  opacity: 0.8;
+}
+
+@media (min-width: 600px) {
+  button {
+    font-size: 20px;
+  }
 }
