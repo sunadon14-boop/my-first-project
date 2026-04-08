@@ -83,22 +83,29 @@ function showQuiz() {
 
 // 👇 ここが超重要（イベントは1回だけ定義）
 nextBtn.addEventListener("click", () => {
-  current++;
-
-  if (current < currentQuiz.length) {
+  // クイズ中
+  if (current < currentQuiz.length - 1) {
+    current++;
     showQuiz();
-  } else {
+  }
+  // 最後の問題の後
+  else if (current === currentQuiz.length - 1) {
+    current++;
     questionEl.textContent = "終了！";
     choicesEl.innerHTML = "";
     resultEl.textContent = `スコア: ${score} / ${currentQuiz.length}`;
 
     nextBtn.textContent = "もう一回";
+  }
+  // 👇ここが追加ポイント（これが無いと戻らない）
+  else {
+    // リセット
+    current = 0;
+    score = 0;
 
-    // リスタート処理
-    nextBtn.onclick = () => {
-      document.getElementById("quiz-box").style.display = "none";
-      document.getElementById("mode-select").style.display = "block";
-      nextBtn.textContent = "次へ";
-    };
+    document.getElementById("quiz-box").style.display = "none";
+    document.getElementById("mode-select").style.display = "block";
+
+    nextBtn.textContent = "次へ";
   }
 });
