@@ -8,11 +8,6 @@ const quiz = [
     question: "ローゼットは何に使う？",
     answers: ["LAN接続", "照明接続", "電源供給", "冷却"],
     correct: 1
-  },
-  {
-    question: "パッチケーブルの役割は？",
-    answers: ["電源供給", "機器接続", "冷却", "保護"],
-    correct: 1
   }
 ];
 
@@ -33,11 +28,20 @@ function showQuiz() {
     btn.textContent = ans;
 
     btn.onclick = () => {
+      // 全ボタン無効化
+      const buttons = document.querySelectorAll("#choices button");
+      buttons.forEach(b => b.disabled = true);
+
       if (index === q.correct) {
-        btn.classList.add("correct");
+        btn.style.background = "green";
+        btn.textContent += " ← 正解！";
         score++;
       } else {
-        btn.classList.add("wrong");
+        btn.style.background = "red";
+        btn.textContent += " ← 不正解";
+
+        // 正解も表示
+        buttons[q.correct].style.background = "green";
       }
     };
 
@@ -52,7 +56,7 @@ document.getElementById("next-btn").onclick = () => {
   } else {
     questionEl.textContent = "終了！";
     choicesEl.innerHTML = "";
-    resultEl.textContent = "スコア: " + score + " / " + quiz.length;
+    resultEl.textContent = `スコア: ${score} / ${quiz.length}`;
   }
 };
 
