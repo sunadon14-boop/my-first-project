@@ -1,82 +1,28 @@
-const fieldQuiz = [
-  {
-    question: "パッチパネルの主な役割として最も適切なのはどれ？",
-    answers: [
-      "電源を供給する",
-      "配線を集約・整理し管理を容易にする",
-      "通信速度を上げる",
-      "冷却する"
-    ],
-    correct: 1
-  },
-  {
-    question: "PoEとは何？",
-    answers: [
-      "LANケーブルで電源供給する技術",
-      "通信を遮断する技術",
-      "冷却する技術",
-      "信号を増幅する技術"
-    ],
-    correct: 0
-  },
-  {
-    question: "ONUの役割は？",
-    answers: [
-      "光信号を電気信号に変換する",
-      "電圧を下げる",
-      "冷却する",
-      "電源を供給する"
-    ],
-    correct: 0
-  },
-  {
-    question: "L2スイッチの役割は？",
-    answers: [
-      "IPアドレスで通信制御する",
-      "MACアドレスで通信制御する",
-      "電圧を変える",
-      "冷却する"
-    ],
-    correct: 1
-  },
-  {
-    question: "UTPケーブルの特徴は？",
-    answers: [
-      "シールド付き",
-      "ツイストペア構造",
-      "光通信",
-      "同軸構造"
-    ],
-    correct: 1
-  },
-  {
-    question: "パッチケーブルの用途は？",
-    answers: [
-      "機器同士を接続する",
-      "電圧を調整する",
-      "冷却する",
-      "信号を遮断する"
-    ],
-    correct: 0
-  },
-  {
-    question: "通信ラック内での役割として正しいのはどれ？",
-    answers: [
-      "配線や機器を整理・固定する",
-      "電圧を安定させる",
-      "信号を増幅する",
-      "冷却のみ行う"
-    ],
-    correct: 0
-  },
-  {
-    question: "光ファイバーの特徴は？",
-    answers: [
-      "電気信号で通信",
-      "光信号で通信",
-      "無線通信",
-      "音声専用"
-    ],
-    correct: 1
+document.getElementById("next-btn").onclick = () => {
+  current++;
+
+  if (current < currentQuiz.length) {
+    showQuiz();
+  } else {
+    questionEl.textContent = "終了！";
+    choicesEl.innerHTML = "";
+    resultEl.textContent = `スコア: ${score} / ${currentQuiz.length}`;
+
+    // 👇ここ追加（超重要）
+    const nextBtn = document.getElementById("next-btn");
+    nextBtn.textContent = "もう一回やる";
+
+    nextBtn.onclick = () => {
+      // リセット
+      current = 0;
+      score = 0;
+      resultEl.textContent = "";
+
+      // モード選択に戻る
+      document.getElementById("quiz-box").style.display = "none";
+      document.getElementById("mode-select").style.display = "block";
+
+      nextBtn.textContent = "次へ";
+    };
   }
-];
+};
