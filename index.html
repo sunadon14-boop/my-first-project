@@ -1,23 +1,18 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>電気通信工事クイズ</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
 
-<h1>⚡ 電気通信工事クイズ ⚡</h1>
+<h1>📡 電気通信クイズ 📡</h1>
 
-<div id="quiz-box">
-  <p id="question">ここに問題が出る</p>
-  <div id="choices"></div>
+<div id="mode-select">
+  <button onclick="startQuiz('it')">IT基礎モード</button>
+  <button onclick="startQuiz('field')">現場モード</button>
 </div>
 
-<button id="next-btn">次へ</button>
-
-<p id="result"></p>
+<div id="quiz-box" style="display:none;">
+  <p id="question"></p>
+  <div id="choices"></div>
+  <button id="next-btn">次へ</button>
+  <p id="result"></p>
+</div>
 
 <script src="script.js"></script>
 </body>
-</html>
